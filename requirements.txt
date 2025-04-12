@@ -3,3 +3,5 @@ neo4j
 langchain
 langchain-community
 langchain_neo4j
+langchain_openai
+tiktoken

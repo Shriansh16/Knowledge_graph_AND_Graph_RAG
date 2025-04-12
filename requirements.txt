@@ -1,2 +1,5 @@
 python-dotenv
 neo4j
+langchain
+langchain-community
+langchain_neo4j

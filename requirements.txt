@@ -4,4 +4,6 @@ langchain
 langchain-community
 langchain_neo4j
 langchain_openai
+langchain-experimental
+wikipedia
 tiktoken

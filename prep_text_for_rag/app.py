@@ -21,7 +21,8 @@ kg = Neo4jGraph(
     url=NEO4J_URI,
     username=NEO4J_USERNAME,
     password=NEO4J_PASSWORD,
-) #database=NEO4J_DATABASE,
+) 
+#database=NEO4J_DATABASE,
 ## Creates a Neo4jGraph object kg, which allows you to query the Neo4j database using LangChain.
 kg.query(
     """

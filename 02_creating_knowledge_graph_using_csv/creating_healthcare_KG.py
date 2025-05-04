@@ -25,6 +25,7 @@ def execute_query(driver, cypher_query, parameters=None):
 
 # Function to create healthcare provider nodes
 def create_healthcare_provider_node(driver, provider, bio):
+    # Creates a HealthcareProvider node with name and bio (it's creating one node with two properties.)
     print("Creating healthcare provider node")
     create_provider_query = """
     MERGE (hp:HealthcareProvider {name: $provider, bio: $bio})
@@ -37,6 +38,7 @@ def create_healthcare_provider_node(driver, provider, bio):
 def create_patient_node(
     driver, patient, patient_age, patient_gender, patient_condition
 ):
+    # Creates a Patient node with details.
     print("Creating patient node")
     create_patient_query = """
     MERGE (p:Patient {name: $patient, age: $patient_age, gender: $patient_gender, condition: $patient_condition})
@@ -52,6 +54,7 @@ def create_patient_node(
 
 # Function to create specialization nodes
 def create_specialization_node(driver, specialization):
+    # Creates a Specialization node.
     print("Creating specialization node")
     create_specialization_query = """
     MERGE (s:Specialization {name: $specialization})
@@ -62,6 +65,7 @@ def create_specialization_node(driver, specialization):
 
 # Function to create location nodes
 def create_location_node(driver, location):
+    # Creates a Location node.
     print("Creating location node")
     create_location_query = """
     MERGE (l:Location {name: $location})
@@ -72,6 +76,16 @@ def create_location_node(driver, location):
 
 # Function to create relationships
 def create_relationships(driver, provider, patient, specialization, location):
+    '''
+    What it does:
+Connects:
+
+HealthcareProvider → Patient with TREATS
+
+HealthcareProvider → Specialization with SPECIALIZES_IN
+
+HealthcareProvider → Location with LOCATED_AT
+    '''
     print("Creating relationships")
     create_relationships_query = """
     MATCH (hp:HealthcareProvider {name: $provider}), (p:Patient {name: $patient})

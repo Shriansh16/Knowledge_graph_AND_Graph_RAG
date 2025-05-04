@@ -16,8 +16,8 @@ OPENAI_ENDPOINT = os.getenv("OPENAI_ENDPOINT")
 
 chat = ChatOpenAI(api_key=OPENAI_API_KEY)
 
-
-kg = Neo4jGraph(
+# lets you run Cypher queries against Neo4j using LangChain.
+kg = Neo4jGraph(               
     url=NEO4J_URI,
     username=NEO4J_USERNAME,
     password=NEO4J_PASSWORD,

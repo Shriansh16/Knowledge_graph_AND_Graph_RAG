@@ -60,7 +60,10 @@ llm_transformer = LLMGraphTransformer(llm=chat)
 graph_documents = llm_transformer.convert_to_graph_documents(documents)
 '''Uses LLM to identify entities, relationships, and structure.
 
-Converts text chunks into graph documents.'''
+Converts text chunks into graph documents.
+LLMGraphTransformer uses GPT to convert text chunks into graph structures—identifying nodes (entities) and edges (relations).
+
+These graph docs are then saved into Neo4j.'''
 
 # # store to neo4j
 res = kg.add_graph_documents(
@@ -83,12 +86,20 @@ vector_index = Neo4jVector.from_existing_graph(
     text_node_properties=["text"],
     embedding_node_property="embedding",
 )
+'''
+Creates a hybrid vector retriever using Neo4jVector.
+
+Stores embeddings (via OpenAIEmbeddings) inside Neo4j.
+
+Allows semantic search over the unstructured chunks.
+'''
 
 
 # Extract entities from text
 #Specifies output format of entity extraction
 class Entities(BaseModel):
-    """Identifying information about entities."""
+    """Identifying information about entities.
+    Uses GPT to extract entities like people and organizations from the user query."""
 
     names: List[str] = Field(
         ...,

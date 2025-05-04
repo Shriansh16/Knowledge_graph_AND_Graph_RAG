@@ -9,8 +9,8 @@ NEO4J_URI = os.environ["NEO4J_URI"]
 NEO4J_USERNAME = os.environ["NEO4J_USERNAME"]
 NEO4J_PASSWORD = os.environ["NEO4J_PASSWORD"]
 AUTH = (NEO4J_USERNAME, NEO4J_PASSWORD)
-
-driver = GraphDatabase.driver(NEO4J_URI, auth=AUTH)
+ 
+driver = GraphDatabase.driver(NEO4J_URI, auth=AUTH) #This initializes a driver that will be used to send queries to the Neo4j database.
 
 def connect_and_query():
     """
